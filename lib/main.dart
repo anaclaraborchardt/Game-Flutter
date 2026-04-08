@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:gameflutter/home/page/ranking_screen.dart';
+import 'home/page/curso_screen.dart';
 import 'home/page/home.dart';
 import 'home/page/login_page.dart';
 
@@ -13,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      home: RankingScreen(),
     );
   }
 }

@@ -15,7 +15,9 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFF5F7FB),
-      bottomNavigationBar: const BottomNavBar(),
+
+      bottomNavigationBar: const BottomNavBar(currentIndex: 0),
+
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16),
@@ -42,6 +44,3 @@ class HomePage extends StatelessWidget {
     );
   }
 }
-
-
-
