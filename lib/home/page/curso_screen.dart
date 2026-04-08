@@ -164,6 +164,59 @@ class CursoScreen extends StatelessWidget {
                 ],
               ),
             ),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+              decoration: BoxDecoration(
+                color: itemGreenBackground,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Row(
+                children: [
+                  // Ícone do item
+                  const Text(
+                    'A',
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      color: itemGreenColor,
+                    ),
+                  ),
+                  const SizedBox(width: 16),
+
+                  // Textos do item
+                  const Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          '1. O que é Flutter?',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            color: darkText,
+                          ),
+                        ),
+                        SizedBox(height: 4),
+                        Text(
+                          'Concluída',
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: itemGreenColor,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  // Ícone de check
+                  const Icon(
+                    Icons.check_circle,
+                    color: itemGreenColor,
+                    size: 20,
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),

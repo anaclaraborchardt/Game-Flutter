@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gameflutter/home/page/desafio_screen.dart';
 import 'package:gameflutter/home/page/ranking_screen.dart';
 
 import '../page/curso_screen.dart';
@@ -29,8 +30,10 @@ class BottomNavBar extends StatelessWidget {
         );
         break;
       case 2:
-      // Futura tela de Desafios
-      // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const DesafiosScreen()));
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const DesafioScreen()),
+        );
         break;
       case 3:
         Navigator.pushReplacement(
