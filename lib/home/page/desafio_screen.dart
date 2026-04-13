@@ -1,7 +1,22 @@
 import 'package:flutter/material.dart';
 
+import 'home.dart';
+
 class DesafioScreen extends StatelessWidget {
   const DesafioScreen({super.key});
+
+  void _handleBack(BuildContext context) {
+    final navigator = Navigator.of(context);
+
+    if (navigator.canPop()) {
+      navigator.pop();
+      return;
+    }
+
+    navigator.pushReplacement(
+      MaterialPageRoute(builder: (_) => const HomePage()),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,9 +45,7 @@ class DesafioScreen extends StatelessWidget {
         ),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: darkText),
-          onPressed: () {
-            Navigator.pop(context);
-          },
+          onPressed: () => _handleBack(context),
         ),
         actions: const [
           Padding(
@@ -166,7 +179,7 @@ class DesafioScreen extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        backgroundColor: progressBackground.withOpacity(0.5),
+                        backgroundColor: progressBackground.withValues(alpha: 0.5),
                       ),
                     ),
                   ),
