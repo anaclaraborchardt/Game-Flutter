@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gameflutter/home/page/desafio_screen.dart';
+import 'package:gameflutter/home/page/profile_screen.dart';
 import 'package:gameflutter/home/page/ranking_screen.dart';
 
 import '../page/curso_screen.dart';
 import '../page/home.dart';
-
 
 class BottomNavBar extends StatelessWidget {
   final int currentIndex;
@@ -42,7 +42,10 @@ class BottomNavBar extends StatelessWidget {
         );
         break;
       case 4:
-      // Futura tela de Perfil
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const ProfileScreen()),
+        );
         break;
     }
   }
@@ -63,10 +66,7 @@ class BottomNavBar extends StatelessWidget {
       elevation: 10,
       onTap: (index) => _onItemTapped(context, index),
       items: const [
-        BottomNavigationBarItem(
-          icon: Icon(Icons.home_outlined),
-          label: 'Home',
-        ),
+        BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: 'Home'),
         BottomNavigationBarItem(
           icon: Icon(Icons.library_books),
           label: 'Trilhas',
@@ -75,10 +75,7 @@ class BottomNavBar extends StatelessWidget {
           icon: Icon(Icons.workspace_premium_outlined),
           label: 'Desafios',
         ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.bar_chart),
-          label: 'Ranking',
-        ),
+        BottomNavigationBarItem(icon: Icon(Icons.bar_chart), label: 'Ranking'),
         BottomNavigationBarItem(
           icon: Icon(Icons.person_outline),
           label: 'Perfil',
