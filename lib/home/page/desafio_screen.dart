@@ -20,7 +20,6 @@ class DesafioScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Paleta de Cores
     const Color darkText = Color(0xFF28283C);
     const Color lightText = Color(0xFF88889D);
     const Color primaryPurple = Color(0xFF6B4DFA);
@@ -69,19 +68,16 @@ class DesafioScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Barra de Progresso
               ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: const LinearProgressIndicator(
-                  value: 0.4, // 2/5 = 40%
+                  value: 0.4,
                   minHeight: 8,
                   backgroundColor: progressBackground,
                   valueColor: AlwaysStoppedAnimation<Color>(primaryPurple),
                 ),
               ),
               const SizedBox(height: 24),
-
-              // Título e XP
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -111,10 +107,8 @@ class DesafioScreen extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 12),
-
-              // Descrição
               const Text(
-                'Complete o código para criar um\ncontador que aumenta ao clicar\nno botão.',
+                'Complete o c\u00f3digo para criar um\ncontador que aumenta ao clicar\nno bot\u00e3o.',
                 style: TextStyle(
                   fontSize: 16,
                   color: darkText,
@@ -122,8 +116,6 @@ class DesafioScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-
-              // Bloco de Código
               Container(
                 decoration: BoxDecoration(
                   border: Border.all(color: const Color(0xFFE5E5E5)),
@@ -132,7 +124,6 @@ class DesafioScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    // Header do Código
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                       decoration: const BoxDecoration(
@@ -148,21 +139,14 @@ class DesafioScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    // Área do Código (Simulando Syntax Highlighting)
-                    Container(
-                      padding: const EdgeInsets.all(16),
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.vertical(bottom: Radius.circular(11)),
-                      ),
-                      child: const _CodeHighlightMock(),
+                    const Padding(
+                      padding: EdgeInsets.all(16),
+                      child: _CodeHighlightMock(),
                     ),
                   ],
                 ),
               ),
               const SizedBox(height: 20),
-
-              // Botões de Ação Secundários
               Row(
                 children: [
                   Expanded(
@@ -196,7 +180,7 @@ class DesafioScreen extends StatelessWidget {
                         ),
                       ),
                       child: const Text(
-                        'Ver Solução',
+                        'Ver Solu\u00e7\u00e3o',
                         style: TextStyle(color: darkText, fontWeight: FontWeight.bold),
                       ),
                     ),
@@ -204,8 +188,6 @@ class DesafioScreen extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 24),
-
-              // Campo de Feedback
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
@@ -214,7 +196,7 @@ class DesafioScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: const Text(
-                  'Seu código está funcionando?',
+                  'Seu c\u00f3digo est\u00e1 funcionando?',
                   style: TextStyle(
                     color: lightText,
                     fontSize: 14,
@@ -222,8 +204,6 @@ class DesafioScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 16),
-
-              // Botão Principal (Enviar)
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
@@ -237,7 +217,7 @@ class DesafioScreen extends StatelessWidget {
                     elevation: 0,
                   ),
                   child: const Text(
-                    'Sim, enviar solução',
+                    'Sim, enviar solu\u00e7\u00e3o',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 16,
@@ -255,7 +235,6 @@ class DesafioScreen extends StatelessWidget {
   }
 }
 
-// Componente para simular as cores do código fonte (Syntax Highlighting)
 class _CodeHighlightMock extends StatelessWidget {
   const _CodeHighlightMock();
 

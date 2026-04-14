@@ -1,9 +1,23 @@
 import 'package:flutter/material.dart';
 
 import '../component/bottom-nav-bar.dart';
+import 'home.dart';
 
 class RankingScreen extends StatelessWidget {
   const RankingScreen({super.key});
+
+  void _handleBack(BuildContext context) {
+    final navigator = Navigator.of(context);
+
+    if (navigator.canPop()) {
+      navigator.pop();
+      return;
+    }
+
+    navigator.pushReplacement(
+      MaterialPageRoute(builder: (_) => const HomePage()),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,37 +39,21 @@ class RankingScreen extends StatelessWidget {
         ),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: darkText),
-          onPressed: () {
-            // Ação de voltar
-          },
+          onPressed: () => _handleBack(context),
         ),
       ),
-
-      // Utilizando o footer com o index 3 (Ranking)
       bottomNavigationBar: const BottomNavBar(currentIndex: 3),
-
       body: Column(
         children: [
-          // Abas (Global, Amigos, Trilha)
           _buildTabs(),
-
           const SizedBox(height: 24),
-
-          // Pódio dos 3 primeiros
           _buildPodium(),
-
           const SizedBox(height: 16),
-
-          // Lista do restante do ranking
-          Expanded(
-            child: _buildRankingList(),
-          ),
+          Expanded(child: _buildRankingList()),
         ],
       ),
     );
   }
-
-  // --- COMPONENTES DA TELA ---
 
   Widget _buildTabs() {
     return Padding(
@@ -112,36 +110,31 @@ class RankingScreen extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.end,
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          // 2º Lugar
+        children: const [
           _PodiumCard(
             name: 'Maria',
             xp: '2.300 XP',
             height: 160,
-            bgColor: const Color(0xFFF0F4FA),
-            crownColor: const Color(0xFFB0BEC5), // Prata
+            bgColor: Color(0xFFF0F4FA),
+            crownColor: Color(0xFFB0BEC5),
             isFirst: false,
           ),
-          const SizedBox(width: 8),
-
-          // 1º Lugar
+          SizedBox(width: 8),
           _PodiumCard(
-            name: 'João',
+            name: 'Jo\u00e3o',
             xp: '2.450 XP',
             height: 190,
-            bgColor: const Color(0xFFFFF7E0),
-            crownColor: const Color(0xFFFFC107), // Ouro
+            bgColor: Color(0xFFFFF7E0),
+            crownColor: Color(0xFFFFC107),
             isFirst: true,
           ),
-          const SizedBox(width: 8),
-
-          // 3º Lugar
+          SizedBox(width: 8),
           _PodiumCard(
             name: 'Pedro',
             xp: '2.100 XP',
             height: 145,
-            bgColor: const Color(0xFFFFF0E6),
-            crownColor: const Color(0xFFFF8A65), // Bronze
+            bgColor: Color(0xFFFFF0E6),
+            crownColor: Color(0xFFFF8A65),
             isFirst: false,
           ),
         ],
@@ -150,11 +143,10 @@ class RankingScreen extends StatelessWidget {
   }
 
   Widget _buildRankingList() {
-    // Dados mocados simulando a lista
     final List<Map<String, dynamic>> rankingData = [
       {'rank': '4', 'name': 'Ana', 'xp': '1.950 XP', 'isMe': false},
       {'rank': '5', 'name': 'Carlos', 'xp': '1.800 XP', 'isMe': false},
-      {'rank': '6', 'name': 'Você', 'xp': '1.250 XP', 'isMe': true},
+      {'rank': '6', 'name': 'Voc\u00ea', 'xp': '1.250 XP', 'isMe': true},
       {'rank': '7', 'name': 'Juliana', 'xp': '1.100 XP', 'isMe': false},
       {'rank': '8', 'name': 'Rafael', 'xp': '1.050 XP', 'isMe': false},
     ];
@@ -178,7 +170,6 @@ class RankingScreen extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
           child: Row(
             children: [
-              // Número do ranking
               SizedBox(
                 width: 24,
                 child: Text(
@@ -190,16 +181,12 @@ class RankingScreen extends StatelessWidget {
                   ),
                 ),
               ),
-
-              // Avatar
               const CircleAvatar(
                 radius: 18,
                 backgroundColor: Color(0xFFD9D9D9),
                 child: Icon(Icons.person, color: Colors.white, size: 20),
               ),
               const SizedBox(width: 12),
-
-              // Nome
               Expanded(
                 child: Text(
                   item['name'],
@@ -210,8 +197,6 @@ class RankingScreen extends StatelessWidget {
                   ),
                 ),
               ),
-
-              // XP
               Text(
                 item['xp'],
                 style: const TextStyle(
@@ -227,8 +212,6 @@ class RankingScreen extends StatelessWidget {
     );
   }
 }
-
-// --- CLASSE AUXILIAR PARA O CARD DO PÓDIO ---
 
 class _PodiumCard extends StatelessWidget {
   final String name;
@@ -254,11 +237,10 @@ class _PodiumCard extends StatelessWidget {
         alignment: Alignment.topCenter,
         clipBehavior: Clip.none,
         children: [
-          // Card de Fundo
           Container(
             height: height,
-            margin: const EdgeInsets.only(top: 16), // Espaço para a coroa vazar
-            padding: const EdgeInsets.only(top: 36, bottom: 16), // Espaço pro avatar
+            margin: const EdgeInsets.only(top: 16),
+            padding: const EdgeInsets.only(top: 36, bottom: 16),
             decoration: BoxDecoration(
               color: bgColor,
               borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
@@ -286,7 +268,6 @@ class _PodiumCard extends StatelessWidget {
                     ),
                   ],
                 ),
-                // Ícone/Medalha decorativa na base
                 Container(
                   width: 40,
                   height: 32,
@@ -297,20 +278,18 @@ class _PodiumCard extends StatelessWidget {
                   alignment: Alignment.center,
                   child: isFirst
                       ? const Text(
-                    '1',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                      fontSize: 16,
-                    ),
-                  )
+                          '1',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                            fontSize: 16,
+                          ),
+                        )
                       : Icon(Icons.star, color: crownColor, size: 16),
                 ),
               ],
             ),
           ),
-
-          // Avatar e Coroa
           Positioned(
             top: -10,
             child: Stack(

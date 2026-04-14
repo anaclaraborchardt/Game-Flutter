@@ -1,9 +1,23 @@
 import 'package:flutter/material.dart';
 
 import '../component/bottom-nav-bar.dart';
+import 'home.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
+
+  void _handleBack(BuildContext context) {
+    final navigator = Navigator.of(context);
+
+    if (navigator.canPop()) {
+      navigator.pop();
+      return;
+    }
+
+    navigator.pushReplacement(
+      MaterialPageRoute(builder: (_) => const HomePage()),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,17 +34,9 @@ class ProfileScreen extends StatelessWidget {
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: darkText),
-          onPressed: () {
-            Navigator.pop(context);
-          },
+          onPressed: () => _handleBack(context),
         ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.settings_outlined, color: darkText),
-            onPressed: () {},
-          ),
-          const SizedBox(width: 8),
-        ],
+       
       ),
       bottomNavigationBar: const BottomNavBar(currentIndex: 4),
       body: SafeArea(
@@ -46,7 +52,7 @@ class ProfileScreen extends StatelessWidget {
                     _ProfileAvatar(),
                     SizedBox(height: 16),
                     Text(
-                      'João Silva',
+                      'Sofia Silva',
                       style: TextStyle(
                         fontSize: 28,
                         fontWeight: FontWeight.w700,
@@ -55,7 +61,7 @@ class ProfileScreen extends StatelessWidget {
                     ),
                     SizedBox(height: 6),
                     Text(
-                      'joao@email.com',
+                      'sofia@email.com',
                       style: TextStyle(fontSize: 14, color: lightText),
                     ),
                   ],
@@ -124,7 +130,7 @@ class ProfileScreen extends StatelessWidget {
                       icon: Icons.local_fire_department_rounded,
                       iconColor: Color(0xFFFF7A00),
                       backgroundColor: Color(0xFFFFF1E5),
-                      title: 'Sequência de 7',
+                      title: 'Sequ\u00eancia de 7',
                       subtitle: 'Estude 7 dias\nseguidos',
                     ),
                   ),
@@ -142,7 +148,7 @@ class ProfileScreen extends StatelessWidget {
               ),
               const SizedBox(height: 28),
               const Text(
-                'Estatísticas',
+                'Estat\u00edsticas',
                 style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.w700,
@@ -163,7 +169,7 @@ class ProfileScreen extends StatelessWidget {
                       iconColor: Color(0xFF3B82F6),
                       iconBackground: Color(0xFFEAF2FF),
                       title: '12',
-                      subtitle: 'Aulas concluídas',
+                      subtitle: 'Aulas conclu\u00eddas',
                     ),
                     Divider(height: 1, color: Color(0xFFF0F1F5)),
                     _StatsTile(
@@ -179,7 +185,7 @@ class ProfileScreen extends StatelessWidget {
                       iconColor: Color(0xFFFF7A00),
                       iconBackground: Color(0xFFFFF1E5),
                       title: '7',
-                      subtitle: 'Sequência atual (dias)',
+                      subtitle: 'Sequ\u00eancia atual (dias)',
                     ),
                   ],
                 ),
@@ -199,7 +205,7 @@ class ProfileScreen extends StatelessWidget {
                     ),
                   ),
                   child: const Text(
-                    'Ver Histórico',
+                    'Ver Hist\u00f3rico',
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
                   ),
                 ),
@@ -266,7 +272,7 @@ class _LevelInfo extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Text(
-          'Nível 5',
+          'N\u00edvel 5',
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.w700,
@@ -275,7 +281,7 @@ class _LevelInfo extends StatelessWidget {
         ),
         const SizedBox(height: 4),
         const Text(
-          'Desenvolvedor Iniciante',
+          'Desenvolvedora Iniciante',
           style: TextStyle(fontSize: 13, color: lightText),
         ),
         const SizedBox(height: 14),

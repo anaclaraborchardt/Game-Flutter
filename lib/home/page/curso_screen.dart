@@ -1,13 +1,26 @@
 import 'package:flutter/material.dart';
 
 import '../component/bottom-nav-bar.dart';
+import 'home.dart';
 
 class CursoScreen extends StatelessWidget {
   const CursoScreen({super.key});
 
+  void _handleBack(BuildContext context) {
+    final navigator = Navigator.of(context);
+
+    if (navigator.canPop()) {
+      navigator.pop();
+      return;
+    }
+
+    navigator.pushReplacement(
+      MaterialPageRoute(builder: (_) => const HomePage()),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    // Paleta de cores baseada na imagem
     const Color darkText = Color(0xFF28283C);
     const Color lightText = Color(0xFF88889D);
     const Color primaryPurple = Color(0xFF6B4DFA);
@@ -23,22 +36,17 @@ class CursoScreen extends StatelessWidget {
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: darkText),
-          onPressed: () {
-            // Ação de voltar
-          },
+          onPressed: () => _handleBack(context),
         ),
       ),
-
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 10),
-
-            // Título do Curso
             const Text(
-              'Flutter Básico',
+              'Flutter B\u00e1sico',
               style: TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
@@ -46,8 +54,6 @@ class CursoScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 8),
-
-            // Contagem de atividades e Porcentagem
             const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -69,8 +75,6 @@ class CursoScreen extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 10),
-
-            // Barra de Progresso
             ClipRRect(
               borderRadius: BorderRadius.circular(10),
               child: const LinearProgressIndicator(
@@ -81,8 +85,6 @@ class CursoScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 30),
-
-            // Header do Módulo
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
               decoration: BoxDecoration(
@@ -93,7 +95,7 @@ class CursoScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Módulo 1 - Fundamentos',
+                    'M\u00f3dulo 1 - Fundamentos',
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
@@ -109,18 +111,15 @@ class CursoScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 12),
-
-            // Único Item do Módulo (Concluído)
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
               decoration: BoxDecoration(
                 color: itemGreenBackground,
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: Row(
+              child: const Row(
                 children: [
-                  // Ícone do item
-                  const Text(
+                  Text(
                     'A',
                     style: TextStyle(
                       fontSize: 22,
@@ -128,15 +127,13 @@ class CursoScreen extends StatelessWidget {
                       color: itemGreenColor,
                     ),
                   ),
-                  const SizedBox(width: 16),
-
-                  // Textos do item
-                  const Expanded(
+                  SizedBox(width: 16),
+                  Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          '1. O que é Flutter?',
+                          '1. O que \u00e9 Flutter?',
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.bold,
@@ -145,7 +142,7 @@ class CursoScreen extends StatelessWidget {
                         ),
                         SizedBox(height: 4),
                         Text(
-                          'Concluída',
+                          'Conclu\u00edda',
                           style: TextStyle(
                             fontSize: 12,
                             color: itemGreenColor,
@@ -154,9 +151,7 @@ class CursoScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-
-                  // Ícone de check
-                  const Icon(
+                  Icon(
                     Icons.check_circle,
                     color: itemGreenColor,
                     size: 20,
@@ -164,16 +159,16 @@ class CursoScreen extends StatelessWidget {
                 ],
               ),
             ),
+            const SizedBox(height: 12),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
               decoration: BoxDecoration(
                 color: itemGreenBackground,
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: Row(
+              child: const Row(
                 children: [
-                  // Ícone do item
-                  const Text(
+                  Text(
                     'A',
                     style: TextStyle(
                       fontSize: 22,
@@ -181,15 +176,13 @@ class CursoScreen extends StatelessWidget {
                       color: itemGreenColor,
                     ),
                   ),
-                  const SizedBox(width: 16),
-
-                  // Textos do item
-                  const Expanded(
+                  SizedBox(width: 16),
+                  Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          '1. O que é Flutter?',
+                          '1. O que \u00e9 Flutter?',
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.bold,
@@ -198,7 +191,7 @@ class CursoScreen extends StatelessWidget {
                         ),
                         SizedBox(height: 4),
                         Text(
-                          'Concluída',
+                          'Conclu\u00edda',
                           style: TextStyle(
                             fontSize: 12,
                             color: itemGreenColor,
@@ -207,9 +200,7 @@ class CursoScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-
-                  // Ícone de check
-                  const Icon(
+                  Icon(
                     Icons.check_circle,
                     color: itemGreenColor,
                     size: 20,
@@ -220,8 +211,6 @@ class CursoScreen extends StatelessWidget {
           ],
         ),
       ),
-
-      // Bottom Navigation Bar
       bottomNavigationBar: const BottomNavBar(currentIndex: 1),
     );
   }

@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../page/curso_screen.dart';
+
 class ChallengeCard extends StatelessWidget {
   const ChallengeCard({super.key});
 
@@ -15,15 +17,22 @@ class ChallengeCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text("Flutter Básico",
-              style: TextStyle(fontWeight: FontWeight.bold)),
+          const Text(
+            'Flutter B\u00e1sico',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
           const SizedBox(height: 5),
-          const Text("10/30 atividades"),
+          const Text('10/30 atividades'),
           const SizedBox(height: 10),
           ElevatedButton(
-            onPressed: () {},
-            child: const Text("Continuar"),
-          )
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const CursoScreen()),
+              );
+            },
+            child: const Text('Continuar'),
+          ),
         ],
       ),
     );
